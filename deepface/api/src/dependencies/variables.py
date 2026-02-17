@@ -21,3 +21,5 @@ class Variables:
         self.face_detection_models = os.getenv("DEEPFACE_FACE_DETECTION_MODELS")
 
         self.auth_token = os.getenv("DEEPFACE_AUTH_TOKEN")
+		self.auth_tokens_json = os.getenv("DEEPFACE_AUTH_TOKENS_JSON")
+

@@ -7,4 +7,9 @@ from deepface.api.src.dependencies.variables import Variables
 class Container:
     def __init__(self, variables: Variables) -> None:
         # once you have variables, you can connect dbs and other services here
-        self.auth_service = AuthService(auth_token=variables.auth_token)
+        # self.auth_service = AuthService(auth_token=variables.auth_token)
+		self.auth_service = AuthService(
+			auth_token=variables.auth_token,
+			auth_tokens=getattr(variables, "auth_tokens", None),         # if present in your version
+			auth_tokens_json=variables.auth_tokens_json,
+		)
