@@ -2,7 +2,7 @@
 from typing import Union, cast, Any, Tuple, Dict
 
 # 3rd party dependencies
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from numpy.typing import NDArray
 
 # project dependencies
@@ -78,11 +78,11 @@ def represent() -> Tuple[Dict[str, Any], int]:
     # load injected container
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
-	# optional: log who is calling
-	logger.info(f"DeepFace API request authorized: {team}")
+    # optional: log who is calling
+    logger.info(f"DeepFace API request authorized: {team}")
 
     input_args = (request.is_json and request.get_json()) or (
         request.form and request.form.to_dict()
@@ -115,8 +115,8 @@ def verify() -> Tuple[Dict[str, Any], int]:
     # load injected container
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
     input_args = (request.is_json and request.get_json()) or (
         request.form and request.form.to_dict()
@@ -153,8 +153,8 @@ def analyze() -> Tuple[Dict[str, Any], int]:
     # load injected container
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
     input_args = (request.is_json and request.get_json()) or (
         request.form and request.form.to_dict()
@@ -200,8 +200,8 @@ def register() -> Tuple[Dict[str, Any], int]:
     variables: Variables = blueprint.variables  # type: ignore[attr-defined]
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
     if variables.conection_details is None:
         return {
@@ -247,8 +247,8 @@ def search() -> Tuple[Dict[str, Any], int]:
     variables: Variables = blueprint.variables  # type: ignore[attr-defined]
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
     if variables.conection_details is None:
         return {
@@ -290,8 +290,8 @@ def build_index() -> Tuple[Dict[str, Any], int]:
     variables: Variables = blueprint.variables  # type: ignore[attr-defined]
     container: Container = blueprint.container  # type: ignore[attr-defined]
     ok, team = container.auth_service.validate_and_get_name(request.headers)
-	if not ok:
-		return jsonify({"message": "Invalid or missing authentication token"}), 401
+    if not ok:
+        return jsonify({"message": "Invalid or missing authentication token"}), 401
 
     if variables.conection_details is None:
         return {
