@@ -7,6 +7,7 @@ from deepface.api.src.dependencies.variables import Variables
 # pylint: disable=too-few-public-methods
 class Container:
     def __init__(self, variables: Variables) -> None:
+        self.variables = variables
         token_store = TokenStore(
             db_path=variables.token_db_path,
             ttl_seconds=1800,
