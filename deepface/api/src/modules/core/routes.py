@@ -23,7 +23,8 @@ blueprint = Blueprint("routes", __name__)
 
 @blueprint.route("/")
 def home() -> str:
-    return f"<h1>Welcome to DeepFace API v{__version__}!</h1>"
+    container: Container = blueprint.container  # type: ignore[attr-defined]
+    return f"<h1>Welcome to {container.variables.app_name} API v{__version__}!</h1>"
 
 
 def extract_image_from_request(img_key: str) -> Union[str, NDArray[Any]]:
