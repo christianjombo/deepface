@@ -1,15 +1,14 @@
 # project dependencies
 from deepface.api.src.modules.auth.service import AuthService
+from deepface.api.src.modules.auth.token_store import TokenStore
 from deepface.api.src.dependencies.variables import Variables
 
 
 # pylint: disable=too-few-public-methods
 class Container:
     def __init__(self, variables: Variables) -> None:
-        # once you have variables, you can connect dbs and other services here
-        # self.auth_service = AuthService(auth_token=variables.auth_token)
-		self.auth_service = AuthService(
-			auth_token=variables.auth_token,
-			auth_tokens=getattr(variables, "auth_tokens", None),         # if present in your version
-			auth_tokens_json=variables.auth_tokens_json,
-		)
+        token_store = TokenStore(
+            db_path=variables.token_db_path,
+            ttl_seconds=1800,
+        )
+        self.auth_service = AuthService(token_store=token_store)
