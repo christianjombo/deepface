@@ -21,5 +21,6 @@ class Variables:
         self.face_detection_models = os.getenv("DEEPFACE_FACE_DETECTION_MODELS")
 
         self.auth_token = os.getenv("DEEPFACE_AUTH_TOKEN")
-		self.auth_tokens_json = os.getenv("DEEPFACE_AUTH_TOKENS_JSON")
+        self.auth_tokens_json = os.getenv("DEEPFACE_AUTH_TOKENS_JSON")
+        self.token_db_path = os.getenv("TOKEN_DB_PATH", "/data/deepface.db")
 
