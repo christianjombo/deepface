@@ -313,6 +313,10 @@ cd scripts && ./dockerize.sh
 
 <p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/deepface-api.jpg" width="90%"></p>
 
+**Environment Variables** — Configure the API with `.env` or environment variables. See [`docs/ENVIRONMENT.md`](docs/ENVIRONMENT.md) for all supported variables (database, auth, models, etc.). Copy [`.env.example`](.env.example) to get started.
+
+**API Endpoints** — Full reference with request/response examples and authentication: [`docs/API.md`](docs/API.md).
+
 Face verification, facial attribute analysis, vector representation and register & search functions are covered in the API. The API accepts images as file uploads (via form data), or as exact image paths, URLs, or base64-encoded strings (via either JSON or form data).
 
 ```shell
