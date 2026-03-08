@@ -31,11 +31,26 @@ def create_app() -> Flask:
     blueprint.container = container  # type: ignore[attr-defined]
 
     load_models_on_startup(variables)
+    _preload_core_models()
 
     app.register_blueprint(blueprint)
 
     logger.info(f"Welcome to DeepFace API v{__version__}!")
     return app
+
+
+def _preload_core_models() -> None:
+    """Preload Facenet and Fasnet models on startup."""
+    try:
+        DeepFace.build_model("Facenet")
+        logger.info("Recognition model Facenet loaded on startup.")
+    except Exception as e:
+        logger.exception("Failed to preload Facenet: %s", e)
+    try:
+        DeepFace.build_model(task="spoofing", model_name="Fasnet")
+        logger.info("Anti-spoofing model Fasnet loaded on startup.")
+    except Exception as e:
+        logger.exception("Failed to preload Fasnet: %s", e)
 
 
 def load_models_on_startup(variables: Variables) -> None:
