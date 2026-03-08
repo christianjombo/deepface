@@ -45,12 +45,12 @@ def _preload_core_models() -> None:
         DeepFace.build_model("Facenet")
         logger.info("Recognition model Facenet loaded on startup.")
     except Exception as e:
-        logger.exception("Failed to preload Facenet: %s", e)
+        logger.error(f"Failed to preload Facenet: {e}")
     try:
         DeepFace.build_model(task="spoofing", model_name="Fasnet")
         logger.info("Anti-spoofing model Fasnet loaded on startup.")
     except Exception as e:
-        logger.exception("Failed to preload Fasnet: %s", e)
+        logger.error(f"Failed to preload Fasnet: {e}")
 
 
 def load_models_on_startup(variables: Variables) -> None:
