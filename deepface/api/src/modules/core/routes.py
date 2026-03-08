@@ -98,7 +98,7 @@ def represent() -> Tuple[Dict[str, Any], int]:
 
     obj, status_code = service.represent(
         img_path=img,
-        model_name=input_args.get("model_name", "VGG-Face"),
+        model_name=input_args.get("model_name", "Facenet"),
         detector_backend=input_args.get("detector_backend", "opencv"),
         enforce_detection=bool(input_args.get("enforce_detection", True)),
         align=bool(input_args.get("align", True)),
@@ -136,7 +136,7 @@ def verify() -> Tuple[Dict[str, Any], int]:
     verification, status_code = service.verify(
         img1_path=img1,
         img2_path=img2,
-        model_name=input_args.get("model_name", "VGG-Face"),
+        model_name=input_args.get("model_name", "Facenet"),
         detector_backend=input_args.get("detector_backend", "opencv"),
         distance_metric=input_args.get("distance_metric", "cosine"),
         align=bool(input_args.get("align", True)),
@@ -222,7 +222,7 @@ def register() -> Tuple[Dict[str, Any], int]:
     result, status_code = service.register(
         img=img,
         img_name=input_args.get("img_name"),
-        model_name=input_args.get("model_name", "VGG-Face"),
+        model_name=input_args.get("model_name", "Facenet"),
         detector_backend=input_args.get("detector_backend", "opencv"),
         enforce_detection=bool(input_args.get("enforce_detection", True)),
         align=bool(input_args.get("align", True)),
@@ -268,7 +268,7 @@ def search() -> Tuple[Dict[str, Any], int]:
 
     return service.search(
         img=img,
-        model_name=input_args.get("model_name", "VGG-Face"),
+        model_name=input_args.get("model_name", "Facenet"),
         detector_backend=input_args.get("detector_backend", "opencv"),
         enforce_detection=bool(input_args.get("enforce_detection", True)),
         align=bool(input_args.get("align", True)),
@@ -305,7 +305,7 @@ def build_index() -> Tuple[Dict[str, Any], int]:
     )
 
     return service.build_index(
-        model_name=input_args.get("model_name", "VGG-Face"),
+        model_name=input_args.get("model_name", "Facenet"),
         detector_backend=input_args.get("detector_backend", "opencv"),
         align=bool(input_args.get("align", True)),
         l2_normalize=bool(input_args.get("l2_normalize", False)),
